@@ -1,29 +1,27 @@
 {
-  "name": "momenhesham",
-  "private": true,
-  "version": "1.0.0",
-  "description": "",
-  "main": "package.json",
-  "author": "Eslam Hesham <esl2mhesham@gmail.com>",
-  "license": "UNLICENSED",
-  "scripts": {
-    "start": "sanity start",
-    "build": "sanity build"
-  },
-  "keywords": [
-    "sanity"
-  ],
-  "dependencies": {
-    "@sanity/base": "^2.8.0",
-    "@sanity/components": "^2.2.6",
-    "@sanity/core": "^2.8.0",
-    "@sanity/default-layout": "^2.8.0",
-    "@sanity/default-login": "^2.8.0",
-    "@sanity/desk-tool": "^2.8.0",
-    "@sanity/vision": "^2.8.0",
-    "prop-types": "^15.7",
-    "react": "^17.0",
-    "react-dom": "^17.0"
-  },
-  "devDependencies": {}
+	"name": "momenhesham",
+	"private": true,
+	"version": "1.0.0",
+	"description": "",
+	"main": "package.json",
+	"author": "Momen Hesham",
+	"license": "UNLICENSED",
+	"keywords": [
+		"sanity",
+		"momenhesham"
+	],
+	"dependencies": {
+		"@sanity/base": "^2.0.5",
+		"@sanity/components": "^2.0.5",
+		"@sanity/core": "^2.0.5",
+		"@sanity/default-layout": "^2.0.5",
+		"@sanity/default-login": "^2.0.5",
+		"@sanity/desk-tool": "^2.0.5",
+		"@sanity/vision": "^2.0.5",
+		"prop-types": "^15.6",
+		"react": "^16.2",
+		"react-dom": "^16.2",
+		"react-hook-form": "^6.7.0",
+		"sanity-plugin-asset-source-unsplash": "^0.1.3"
+	}
 }

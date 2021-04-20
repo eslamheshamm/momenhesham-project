@@ -10,6 +10,11 @@
 		"sanity",
 		"momenhesham"
 	],
+	"scripts": {
+		"start": "sanity start",
+		"test": "sanity check",
+		"build": "sanity build public -y"
+	  },
 	"dependencies": {
 		"@sanity/base": "^2.0.5",
 		"@sanity/components": "^2.0.5",

@@ -1,8 +1,8 @@
 {
 	"root": true,
 	"api": {
-		"projectId": "rdnhwoqt",
-		"dataset": "production"
+		"projectId": "PULLED_FROM_ENV",
+		"dataset": "PULLED_FROM_ENV"
 	},
 	"project": {
 		"name": "Momen Hesham",

@@ -1,9 +1,43 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
-
 /* purgecss start ignore */
+@import "./typography.css";
 
 @tailwind base;
 @tailwind components;
 
 /* purgecss end ignore */
 @tailwind utilities;
+
+.gradientOne {
+	background: radial-gradient(
+		57.33% 57.33% at 50% 50%,
+		#c070ff 0%,
+		rgba(255, 255, 255, 0) 100%
+	);
+	opacity: 0.4;
+	filter: blur(124px);
+}
+.gradientTwo {
+	background: radial-gradient(
+		57.33% 57.33% at 50% 50%,
+		#ff7070 0%,
+		rgba(255, 255, 255, 0) 100%
+	);
+	opacity: 0.4;
+	filter: blur(124px);
+}
+
+@keyframes gradientMoveOne {
+	0% {
+		transform: translate(0px);
+	}
+
+	100% {
+		transform: translate(-90px);
+	}
+}
+.gradientTwo:hover,
+.gradientOne:hover {
+	animation-name: gradientMoveOne;
+	animation-duration: 1.2s;
+	animation-iteration-count: infinite;
+}

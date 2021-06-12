@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+@font-face {
+	font-family: "NeueLight";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Neue Haas Grotesk Display Light"),
+		url("./fonts/NeueHaasDisplayLight.woff") format("woff");
+}
+
+@font-face {
+	font-family: "NeueBold";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Neue Haas Grotesk Display Bold"),
+		url("./fonts/NeueHaasDisplayBold.woff") format("woff");
+}

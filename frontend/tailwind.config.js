@@ -5,7 +5,10 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				space: ["Space Mono", "monospace"],
+				Neue: ["NeueLight", "monospace"],
+				NeueBold: ["NeueBold", "monospace"],
 			},
+			animation: ["hover", "focus"],
 		},
 	},
 	variants: {

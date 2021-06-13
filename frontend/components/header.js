@@ -57,7 +57,7 @@ export default function Header() {
 				<Link href="/">
 					<a href="/" className="flex items-center w-[250px]">
 						<Observer />
-						<div className="border-l-2 h-[16px] bg-[#B4B4B4] mx-3 w-1"></div>
+						<div className=" h-[16px] bg-[#B4B4B4] mx-3 w-1"></div>
 						<span className="text-[#B4B4B4] text-xs sm:text-sm font-normal flex-none">
 							Momen Hesham
 						</span>

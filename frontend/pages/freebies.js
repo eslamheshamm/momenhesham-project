@@ -1,6 +1,7 @@
 import Layout from "../components/layout";
 import { getAllPostsForHome } from "../lib/api";
 import Head from "next/head";
+import Image from "next/image";
 
 export default function Index({ allPosts, preview }) {
 	// const heroPost = allPosts[0];

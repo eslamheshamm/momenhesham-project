@@ -13,10 +13,18 @@ export default function Index({ allPosts, preview }) {
 				<Head>
 					<title>Freebies | Momen Hesham</title>
 				</Head>
-				<div className="flex flex-col items-center justify-center min-h-screen ">
-					<h2 className="text-3xl  xl:text-6xl font-bold mb-6">Freebies</h2>
-					<h3 className="sm:text-lg md:text-xl lg:text-3xl ">Coming Soon!</h3>
-				</div>
+				<section className="min-h-screen flex flex-col justify-center items-center my-10 md:my-0">
+					<Image
+						src="/coming-soon.svg"
+						width={345}
+						height={272}
+						alt="coming soon"
+					/>
+					<h2 className=" font-NeueBold text-4xl mt-8 mb-4">
+						Work in Progress.
+					</h2>
+					<p className=" font-Neue ">Designer life is messy</p>
+				</section>
 			</Layout>
 		</>
 	);

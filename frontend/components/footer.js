@@ -1,6 +1,6 @@
 export default function Footer() {
 	return (
-		<footer className="w-10/12 mx-auto absolute bottom-0 right-0 left-0 flex items-center justify-center sm:justify-between">
+		<footer className="w-11/12 mx-auto absolute bottom-0 my-2 right-0 left-0 flex items-center justify-center sm:justify-between">
 			<h2 className=" font-bold hidden sm:block">© 2021 Momen Hesham</h2>
 			<ul className="flex">
 				<li className="mr-3">

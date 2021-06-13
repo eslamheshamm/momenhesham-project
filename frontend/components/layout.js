@@ -4,7 +4,7 @@ import Header from "./header";
 
 export default function Layout({ preview, children }) {
 	return (
-		<main className=" min-h-screen h-full pb-12 font-space relative">
+		<main className=" min-h-screen h-full pb-16 font-space relative">
 			<Meta />
 			<Header />
 			<div className="h-full">{children}</div>

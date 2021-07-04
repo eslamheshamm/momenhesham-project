@@ -18,7 +18,7 @@ const WidgetPreview = (props) => {
 	const [copy, setCopy] = React.useState(false);
 
 	const text = blocksToText(content);
-	const tweet = text[0];
+	const tweet = text[0].slice(0, 180);
 	return (
 		<article className="  md:w-9/12 lg:w-6/12 mx-auto my-10">
 			<Head>
@@ -42,7 +42,7 @@ const WidgetPreview = (props) => {
 					<TwitterShareButton
 						title={`${title} 
 
-${tweet.slice(0, 180).trim()}...
+${tweet}
 							 `}
 						via="momenheshamahmed"
 						url={`https://momenhesham-portfolio.vercel.app/widgets/${slug}`}

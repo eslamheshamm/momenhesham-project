@@ -21,8 +21,9 @@ const Widget = ({ post, preview }) => {
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
 	}
-	// const text = blocksToText(post.body);
-	// const tweet = text[0];
+
+	const text = blocksToText(post.body);
+	const tweet = text[0].slice(0, 180);
 	// ${tweet.slice(0, 180).trim()}...
 
 	return (
@@ -52,6 +53,8 @@ const Widget = ({ post, preview }) => {
 								<li className="mr-4">
 									<TwitterShareButton
 										title={`${post.title} 
+
+${tweet}
 							 `}
 										via="momenheshamahmed"
 										url={`https://momenhesham-portfolio.vercel.app/widgets/${post.slug}`}

@@ -27,7 +27,14 @@ const MenuItems = ({ className }) => {
 							<span>Case Studies</span>
 						</a>
 					</Link>
-				</li>{" "}
+				</li>
+				<li className="lg:mr-8 mt-2 lg:mt-0">
+					<Link href="/widgets">
+						<a href="/widgets" className="flex items-center uppercase">
+							<span>Widgets</span>
+						</a>
+					</Link>
+				</li>
 				<li className="lg:mr-8 mt-2 lg:mt-0">
 					<Link href="/freebies">
 						<a href="/freebies" className="flex items-center uppercase">

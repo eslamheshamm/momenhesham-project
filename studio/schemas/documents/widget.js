@@ -18,6 +18,12 @@ export default {
 			},
 		},
 		{
+			name: "excerpt",
+			type: "text",
+			title: "Summery",
+			validation: (Rule) => Rule.required().min(10).max(180),
+		},
+		{
 			name: "body",
 			title: "Body",
 			type: "blockContent",

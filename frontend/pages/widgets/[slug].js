@@ -10,21 +10,12 @@ import markdownStyles from "../../components/markdown-styles.module.css";
 import { TwitterShareButton } from "react-share";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-function blocksToText(blocks) {
-	return blocks.map((block) =>
-		block.children.map((child) => child.text).join("")
-	);
-}
 const Widget = ({ post, preview }) => {
 	const [copy, setCopy] = React.useState(false);
 	const router = useRouter();
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
 	}
-
-	const text = blocksToText(post.body);
-	const tweet = text[0].slice(0, 180);
-	// ${tweet.slice(0, 180).trim()}...
 
 	return (
 		<Layout preview={preview}>
@@ -54,7 +45,7 @@ const Widget = ({ post, preview }) => {
 									<TwitterShareButton
 										title={`${post.title} 
 
-${tweet}
+${post.excerpt}
 							 `}
 										via="momenheshamahmed"
 										url={`https://momenhesham-portfolio.vercel.app/widgets/${post.slug}`}

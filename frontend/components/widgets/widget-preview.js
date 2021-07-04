@@ -6,19 +6,11 @@ import markdownStyles from "../markdown-styles.module.css";
 import { TwitterShareButton } from "react-share";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-function blocksToText(blocks) {
-	return blocks.map((block) =>
-		block.children.map((child) => child.text).join("")
-	);
-}
-
 const WidgetPreview = (props) => {
-	const { title, content, slug } = props;
+	const { title, content, slug, excerpt } = props;
 
 	const [copy, setCopy] = React.useState(false);
 
-	const text = blocksToText(content);
-	const tweet = text[0].slice(0, 180);
 	return (
 		<article className="  md:w-9/12 lg:w-6/12 mx-auto my-10">
 			<Head>
@@ -42,7 +34,7 @@ const WidgetPreview = (props) => {
 					<TwitterShareButton
 						title={`${title} 
 
-${tweet}
+${excerpt}
 							 `}
 						via="momenheshamahmed"
 						url={`https://momenhesham-portfolio.vercel.app/widgets/${slug}`}

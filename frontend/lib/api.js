@@ -93,7 +93,8 @@ export async function getWidgetPost(slug, preview) {
 				title,
 				excerpt,
 				'slug': slug.current,
-				body
+				body,
+				excerpt
 
       }`,
 				{ slug }
@@ -109,7 +110,8 @@ export async function getAllWidgets(preview) {
 	  excerpt,
 	  title,
 	  'slug': slug.current,
-	  body
+	  body,
+	  excerpt
     }`);
 	return getUniquePosts(results);
 }

@@ -19,7 +19,6 @@ const postFields = `
   'date': publishedAt,
   excerpt,
   "categories": categories[]->title,
-
   'slug': slug.current,
   'coverImage': mainImage,
   'author': author->{name, 'picture': image.asset->url},
@@ -82,4 +81,39 @@ export async function getPostAndMorePosts(slug, preview) {
 		),
 	]);
 	return { post, morePosts: getUniquePosts(morePosts) };
+}
+
+export async function getWidgetPost(slug, preview) {
+	const curClient = getClient(preview);
+	const [post] = await Promise.all([
+		curClient
+			.fetch(
+				`*[_type == "widget" && slug.current == $slug] | order(_updatedAt desc) {
+				_id,
+				title,
+				'slug': slug.current,
+				body
+
+      }`,
+				{ slug }
+			)
+			.then((res) => res?.[0]),
+	]);
+	return { post };
+}
+export async function getAllWidgets(preview) {
+	const results = await getClient(preview)
+		.fetch(`*[_type == "widget"] | order(publishedAt desc){
+      _id,
+	  title,
+	  'slug': slug.current,
+	  body
+    }`);
+	return getUniquePosts(results);
+}
+export async function getAllWidgetsWithSlug() {
+	const data = await client.fetch(
+		`*[_type == "widget"]{ 'slug': slug.current }`
+	);
+	return data;
 }

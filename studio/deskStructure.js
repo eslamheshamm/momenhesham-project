@@ -11,6 +11,9 @@ export default () =>
 			// S.listItem()
 			// 	.title("Blog")
 			// 	.child(S.document().schemaType("post").documentId("post")),
+			// S.listItem()
+			// 	.title("Widgets")
+			// 	.child(S.document().schemaType("widget").documentId("widget")),
 			blog,
 			...S.documentTypeListItems().filter(hiddenDocTypes),
 		]);

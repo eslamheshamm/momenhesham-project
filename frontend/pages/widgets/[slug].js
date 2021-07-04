@@ -45,7 +45,7 @@ const Widget = ({ post, preview }) => {
 									<TwitterShareButton
 										title={`${post.title} 
 
-${post.excerpt}
+${post.excerpt || ""}
 							 `}
 										via="momenheshamahmed"
 										url={`https://momenhesham-portfolio.vercel.app/widgets/${post.slug}`}

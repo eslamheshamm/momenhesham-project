@@ -8,7 +8,6 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const WidgetPreview = (props) => {
 	const { title, content, slug, excerpt } = props;
-
 	const [copy, setCopy] = React.useState(false);
 
 	return (
@@ -34,7 +33,7 @@ const WidgetPreview = (props) => {
 					<TwitterShareButton
 						title={`${title} 
 
-${excerpt}
+${excerpt || ""}
 							 `}
 						via="momenheshamahmed"
 						url={`https://momenhesham-portfolio.vercel.app/widgets/${slug}`}

@@ -10,20 +10,20 @@ import markdownStyles from "../../components/markdown-styles.module.css";
 import { TwitterShareButton } from "react-share";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-export default function Widget({ post, preview }) {
+function blocksToText(blocks) {
+	return blocks.map((block) =>
+		block.children.map((child) => child.text).join("")
+	);
+}
+const Widget = ({ post, preview }) => {
 	const [copy, setCopy] = React.useState(false);
-	function blocksToText(blocks) {
-		return blocks.map((block) =>
-			block.children.map((child) => child.text).join("")
-		);
-	}
-	const text = blocksToText(post.body);
-	const tweet = text[0];
-
 	const router = useRouter();
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
 	}
+	const text = blocksToText(post.body);
+	const tweet = text[0];
+
 	return (
 		<Layout preview={preview}>
 			<section className="w-10/12 my-24 mx-auto">
@@ -110,8 +110,9 @@ ${tweet.slice(0, 180).trim()}...
 			</section>
 		</Layout>
 	);
-}
+};
 
+export default Widget;
 export async function getStaticProps({ params, preview = false }) {
 	const data = await getWidgetPost(params.slug, preview);
 	return {

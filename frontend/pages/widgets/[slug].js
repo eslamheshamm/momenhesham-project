@@ -18,9 +18,9 @@ export default function Widget({ post, preview }) {
 		);
 	}
 	const text = blocksToText(post.body);
+	const tweet = text[0];
 
 	const router = useRouter();
-
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
 	}
@@ -33,10 +33,6 @@ export default function Widget({ post, preview }) {
 					<>
 						<Head>
 							<title>{post.title}</title>
-							<meta
-								property="og:image"
-								content="https://i.ibb.co/RStQSXd/screen.png"
-							/>
 						</Head>
 
 						<article className="  md:w-9/12 lg:w-6/12 mx-auto my-10">
@@ -55,8 +51,7 @@ export default function Widget({ post, preview }) {
 								<li className="mr-4">
 									<TwitterShareButton
 										title={`${post.title} 
-
-${text[0].slice(0, 180).trim()}
+${tweet.slice(0, 180).trim()}...
 							 `}
 										via="momenheshamahmed"
 										url={`https://momenhesham-portfolio.vercel.app/widgets/${post.slug}`}

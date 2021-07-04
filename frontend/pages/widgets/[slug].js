@@ -1,16 +1,26 @@
+import React from "react";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Layout from "../../components/layout";
 import { getWidgetPost, getAllWidgetsWithSlug } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import Head from "next/head";
-import Form from "../../components/form";
-import Comments from "../../components/comments";
 import BlockContent from "@sanity/block-content-to-react";
 import markdownStyles from "../../components/markdown-styles.module.css";
+import { TwitterShareButton } from "react-share";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+
 export default function Widget({ post, preview }) {
-	console.log(post, "post");
+	const [copy, setCopy] = React.useState(false);
+	function blocksToText(blocks) {
+		return blocks.map((block) =>
+			block.children.map((child) => child.text).join("")
+		);
+	}
+	const text = blocksToText(post.body);
+
 	const router = useRouter();
+
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
 	}
@@ -23,6 +33,10 @@ export default function Widget({ post, preview }) {
 					<>
 						<Head>
 							<title>{post.title}</title>
+							<meta
+								property="og:image"
+								content="https://i.ibb.co/RStQSXd/screen.png"
+							/>
 						</Head>
 
 						<article className="  md:w-9/12 lg:w-6/12 mx-auto my-10">
@@ -39,13 +53,15 @@ export default function Widget({ post, preview }) {
 							</div>
 							<ul className="flex items-center">
 								<li className="mr-4">
-									<button>
-										<a
-											href="http://google.com"
-											target="_blank"
-											rel="noopener noreferrer"
-											className="flex items-center font-NeueBold"
-										>
+									<TwitterShareButton
+										title={`${post.title} 
+
+${text[0].slice(0, 180).trim()}
+							 `}
+										via="momenheshamahmed"
+										url={`https://momenhesham-portfolio.vercel.app/widgets/${post.slug}`}
+									>
+										<div className="flex items-center font-NeueBold">
 											<svg
 												width="16"
 												height="14"
@@ -60,42 +76,40 @@ export default function Widget({ post, preview }) {
 												/>
 											</svg>
 											<span>Tweet</span>
-										</a>
-									</button>
+										</div>
+									</TwitterShareButton>
 								</li>
-								<li>
-									<button>
-										<a
-											href="http://google.com"
-											target="_blank"
-											rel="noopener noreferrer"
-											className="flex items-center font-NeueBold"
-										>
+
+								<li className="flex ">
+									<CopyToClipboard
+										text={`https://momenhesham-portfolio.vercel.app/widgets/${post.slug}`}
+										onCopy={() => setCopy(true)}
+									>
+										<button className="flex items-center font-NeueBold focus:outline-none">
 											<svg
-												width="13"
-												height="10"
-												viewBox="0 0 13 10"
+												width="12"
+												height="12"
+												viewBox="0 0 12 12"
 												fill="none"
 												xmlns="http://www.w3.org/2000/svg"
 												className="mr-2"
 											>
 												<path
-													d="M0.702707 7.70718C0.638616 7.83375 0.661664 7.98702 0.760146 8.08915C0.858627 8.19127 1.01096 8.21987 1.13977 8.16042L2.806 7.39139C4.2064 6.74506 5.73463 6.44938 7.26022 6.51893C7.27834 7.00883 7.30523 7.4985 7.34089 7.98768L7.38652 8.61366C7.4142 8.99342 7.83765 9.20571 8.15851 9.00069C9.55117 8.11081 10.7619 6.96418 11.7261 5.62191L12.0329 5.19483C12.1164 5.07862 12.1164 4.92209 12.0329 4.80588L11.7261 4.3788C10.7619 3.03653 9.55117 1.8899 8.15851 1.00002C7.83765 0.794994 7.4142 1.00729 7.38652 1.38705L7.34089 2.01303C7.31028 2.43293 7.28613 2.85319 7.26845 3.27365H6.83972C4.4524 3.27364 2.26792 4.61608 1.18946 6.74591L0.702707 7.70718Z"
+													d="M0.166748 4C0.166748 1.88291 1.88299 0.166672 4.00008 0.166672H8.67532C8.95146 0.166672 9.17532 0.390529 9.17532 0.666672C9.17532 0.942814 8.95146 1.16667 8.67532 1.16667H4.00008C2.43527 1.16667 1.16675 2.4352 1.16675 4V8.73792C1.16675 9.01406 0.94289 9.23792 0.666748 9.23792C0.390606 9.23792 0.166748 9.01406 0.166748 8.73792V4Z"
+													fill="black"
+												/>
+												<path
+													d="M10.2684 2.52884C8.10782 2.28736 5.89237 2.28736 3.73173 2.52884C3.11622 2.59764 2.62159 3.08203 2.54904 3.70232C2.29279 5.89331 2.29279 8.1067 2.54904 10.2977C2.62159 10.918 3.11622 11.4024 3.73173 11.4712C5.89237 11.7126 8.10782 11.7126 10.2684 11.4712C10.884 11.4024 11.3786 10.918 11.4511 10.2977C11.7074 8.1067 11.7074 5.89331 11.4511 3.70232C11.3786 3.08203 10.884 2.59764 10.2684 2.52884Z"
 													fill="black"
 												/>
 											</svg>
-											<span>Share</span>
-										</a>
-									</button>
+											<span>Copy Link</span>
+										</button>
+									</CopyToClipboard>
+									{copy && <span className="mx-4">Copied!</span>}
 								</li>
 							</ul>
 						</article>
-						{/* 
-						<Comments comments={post.comments} />
-						<Form _id={post._id} /> */}
-						{/* 
-						<SectionSeparator />
-						{morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
 					</>
 				)}
 			</section>

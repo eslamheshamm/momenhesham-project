@@ -91,6 +91,7 @@ export async function getWidgetPost(slug, preview) {
 				`*[_type == "widget" && slug.current == $slug] | order(_updatedAt desc) {
 				_id,
 				title,
+				excerpt,
 				'slug': slug.current,
 				body
 
@@ -105,6 +106,7 @@ export async function getAllWidgets(preview) {
 	const results = await getClient(preview)
 		.fetch(`*[_type == "widget"] | order(publishedAt desc){
       _id,
+	  excerpt,
 	  title,
 	  'slug': slug.current,
 	  body

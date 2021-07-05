@@ -18,12 +18,12 @@ export default function Post({ post, morePosts, preview }) {
 	}
 	return (
 		<Layout preview={preview}>
-			<section className="w-11/12 sm:w-8/12 lg:w-6/12 mx-auto">
+			<section className="w-11/12 my-24 mx-auto">
 				{router.isFallback ? (
 					<PostTitle>Loading…</PostTitle>
 				) : (
 					<>
-						<article>
+						<article className="  md:w-9/12 lg:w-6/12 mx-auto my-10">
 							<Head>
 								<title>{post.title}</title>
 								<meta property="og:image" content={post.coverImage} />

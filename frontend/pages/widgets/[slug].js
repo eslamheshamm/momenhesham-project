@@ -19,7 +19,7 @@ const Widget = ({ post, preview }) => {
 
 	return (
 		<Layout preview={preview}>
-			<section className="w-10/12 my-24 mx-auto">
+			<section className="w-11/12 my-24 mx-auto">
 				{router.isFallback ? (
 					<PostTitle>Loading…</PostTitle>
 				) : (

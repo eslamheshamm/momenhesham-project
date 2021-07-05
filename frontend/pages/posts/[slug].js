@@ -18,7 +18,7 @@ export default function Post({ post, morePosts, preview }) {
 	}
 	return (
 		<Layout preview={preview}>
-			<section className="w-10/12 sm:w-8/12 lg:w-6/12 mx-auto">
+			<section className="w-11/12 sm:w-8/12 lg:w-6/12 mx-auto">
 				{router.isFallback ? (
 					<PostTitle>Loading…</PostTitle>
 				) : (

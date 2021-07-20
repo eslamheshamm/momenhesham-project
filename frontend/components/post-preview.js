@@ -9,21 +9,23 @@ export default function PostPreview({
 	categories,
 }) {
 	return (
-		<article className="w-full">
-			<div className="mb-5">
-				<CoverImage
-					slug={slug}
-					title={title}
-					imageObject={coverImage}
-					url={imageBuilder(coverImage).url()}
+		<article className="w-full p-6 border rounded-3xl">
+			<Link as={`/posts/${slug}`} href="/posts/[slug]">
+				<img
+					src={imageBuilder(coverImage)
+						.width(1240)
+						.height(640)
+						.fit("scale")
+						.url()}
+					className="rounded-3xl object-cover w-[352px] h-[362px] cursor-pointer "
 				/>
-			</div>
-			<h3 className="text-xl sm:text-2xl lg:text-2xl font-bold mt-6 leading-snug">
+			</Link>
+			<h3 className="text-xl sm:text-2xl lg:text-2xl font-bold mt-4  ">
 				<Link as={`/posts/${slug}`} href="/posts/[slug]">
 					<a className="hover:underline ">{title}</a>
 				</Link>
 			</h3>
-			<div>
+			{/* <div>
 				<p className=" my-6 opacity-60 break-words">{excerpt}</p>
 			</div>
 			<ul className="flex">
@@ -33,7 +35,7 @@ export default function PostPreview({
 							{category}
 						</li>
 					))}
-			</ul>
+			</ul> */}
 		</article>
 	);
 }

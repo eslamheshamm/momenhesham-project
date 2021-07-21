@@ -24,9 +24,8 @@
 	},
 	"devDependencies": {
 		"@sanity/cli": "^2.0.5",
-		"@tailwindcss/jit": "^0.1.18",
-		"autoprefixer": "^10.2.5",
-		"postcss": "^8.2.10",
-		"tailwindcss": "^2.1.1"
+		"autoprefixer": "^10.3.1",
+		"postcss": "^8.3.5",
+		"tailwindcss": "^2.2.4"
 	}
 }

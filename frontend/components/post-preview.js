@@ -20,9 +20,9 @@ export default function PostPreview({
 					className="rounded-3xl object-cover w-[352px] h-[362px] cursor-pointer "
 				/>
 			</Link>
-			<h3 className="text-xl sm:text-2xl lg:text-2xl font-bold mt-4  ">
+			<h3 className="text-xl sm:text-2xl font-NeueBold font-bold mt-4 ">
 				<Link as={`/posts/${slug}`} href="/posts/[slug]">
-					<a className="hover:underline ">{title}</a>
+					<a className="hover:underline  ">{title}</a>
 				</Link>
 			</h3>
 			{/* <div>

@@ -57,7 +57,7 @@ export default function Header() {
 	return (
 		<header
 			className={cn(
-				"mt-[60px] font-space   w-11/12 xl:w-10/12 mx-auto lg:flex justify-between items-center"
+				"mt-[60px] font-space   w-11/12 mx-auto lg:flex justify-between items-center"
 			)}
 		>
 			<div className="flex justify-between">

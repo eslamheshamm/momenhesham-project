@@ -1,7 +1,7 @@
 import Footer from "../components/footer";
 import Header from "./header";
 
-export default function Layout({ preview, children }) {
+export default function Layout({ children }) {
 	return (
 		<main className=" min-h-screen h-full pb-24 font-space relative">
 			<Header />

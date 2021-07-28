@@ -49,7 +49,27 @@ export async function getAllPostsForHome(preview) {
     }`);
 	return getUniquePosts(results);
 }
-
+export async function getAllPostsForDesign(preview) {
+	const results = await getClient(preview)
+		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Design"]._id)] | order(date desc, _updatedAt desc){
+      ${postFields}
+    }`);
+	return getUniquePosts(results);
+}
+export async function getAllPostsForPhilosophy(preview) {
+	const results = await getClient(preview)
+		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Philosophy"]._id)] | order(date desc, _updatedAt desc){
+      ${postFields}
+    }`);
+	return getUniquePosts(results);
+}
+export async function getAllPostsForPersonal(preview) {
+	const results = await getClient(preview)
+		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Personal"]._id)] | order(date desc, _updatedAt desc){
+      ${postFields}
+    }`);
+	return getUniquePosts(results);
+}
 export async function getPostAndMorePosts(slug, preview) {
 	const curClient = getClient(preview);
 	const [post, morePosts] = await Promise.all([

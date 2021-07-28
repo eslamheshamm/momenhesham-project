@@ -1,16 +1,17 @@
+import React from "react";
 import Head from "next/head";
-import PostsPreview from "../components/posts-preview";
-import Layout from "../components/layout";
-import { getAllPostsForHome } from "../lib/api";
-import Link from "../components/Link";
-export default function Index({ allPosts }) {
-	// const heroPost = allPosts[0];
-	// const morePosts = allPosts.slice(1);
-	const ALLPOSTS = allPosts;
+
+import Link from "../../components/Link";
+import Layout from "../../components/layout";
+import { getAllPostsForDesign } from "../../lib/api";
+import PostsPreview from "../../components/posts-preview";
+export default function Design({ designPosts }) {
+	const Posts = designPosts;
+	console.log(Posts);
 	return (
 		<Layout>
 			<Head>
-				<title>Blog | Momen Hesham</title>
+				<title>Design | Momen Hesham</title>
 			</Head>
 			<section className="w-11/12 mx-auto mt-16">
 				{" "}
@@ -57,27 +58,14 @@ export default function Index({ allPosts }) {
 					</li>
 				</ul>
 			</section>
-
-			{/* {heroPost && (
-						<HeroPost
-							title={heroPost.title}
-							coverImage={heroPost.coverImage}
-							date={heroPost.date}
-							author={heroPost.author}
-							slug={heroPost.slug}
-							excerpt={heroPost.excerpt}
-						/>
-					)} */}
-
-			{ALLPOSTS.length > 0 && <PostsPreview posts={ALLPOSTS} />}
+			{Posts && <PostsPreview posts={Posts} />}
 		</Layout>
 	);
 }
-
 export async function getStaticProps({ preview = false }) {
-	const allPosts = await getAllPostsForHome(preview);
+	const designPosts = await getAllPostsForDesign(preview);
 	return {
-		props: { allPosts, preview },
+		props: { designPosts, preview },
 		revalidate: 1,
 	};
 }

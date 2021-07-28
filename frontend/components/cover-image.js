@@ -10,7 +10,11 @@ export default function CoverImage({ title, imageObject, slug }) {
 				className={cn("rounded-2xl object-cover m-0", {
 					" w-full": slug,
 				})}
-				src={imageBuilder(imageObject).width(1240).height(640).url()}
+				src={imageBuilder(imageObject)
+					.width(1240)
+					.height(640)
+					.fit("fill")
+					.url()}
 			/>
 		</figure>
 	);

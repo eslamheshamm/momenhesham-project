@@ -1,6 +1,5 @@
-import CoverImage from "./cover-image";
 import Link from "next/link";
-import { imageBuilder } from "../lib/sanity";
+import { imageBuilder } from "../../lib/sanity";
 export default function PostPreview({
 	title,
 	coverImage,

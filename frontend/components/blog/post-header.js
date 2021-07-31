@@ -1,6 +1,6 @@
-import Date from "../components/date";
-import CoverImage from "../components/cover-image";
-import PostTitle from "../components/post-title";
+import Date from "../date";
+import CoverImage from "../cover-image";
+import PostTitle from "../post-title";
 export default function PostHeader({ title, coverImage, date, categories }) {
 	return (
 		<div className="mt-20 md:mt-32 ">

@@ -8,9 +8,13 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import blockContent from "./blockContent";
 import category from "./category";
 import comment from "./comment";
+import cta from "./objects/cta";
+
 // docements
 import post from "./documents/post";
 import widget from "./documents/widget.js";
+import project from "./documents/project";
+import podcast from "./documents/podcast";
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
 	// We name our schema
@@ -21,11 +25,14 @@ export default createSchema({
 		// The following are document types which will appear
 		// in the studio.
 		widget,
+		project,
 		post,
-		category,
+		podcast,
 		// When added to this list, object types can be used as
 		// { type: 'typename' } in other document schemas
+		cta,
 		blockContent,
 		comment,
+		category,
 	]),
 });

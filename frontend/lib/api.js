@@ -21,7 +21,6 @@ const postFields = `
   "categories": categories[]->title,
   'slug': slug.current,
   'coverImage': mainImage,
-  'author': author->{name, 'picture': image.asset->url},
 `;
 
 const getClient = (preview) => (preview ? previewClient : client);
@@ -140,4 +139,53 @@ export async function getAllWidgetsWithSlug() {
 		`*[_type == "widget"]{ 'slug': slug.current }`
 	);
 	return data;
+}
+
+export async function getProjectPost(slug, preview) {
+	const curClient = getClient(preview);
+	const [post] = await Promise.all([
+		curClient
+			.fetch(
+				`*[_type == "project" && slug.current == $slug] | order(_updatedAt desc) {
+				_id,
+				title,
+				'slug': slug.current,
+				body,
+				"links": links[],
+				'date': publishedAt,
+				'coverImage': mainImage
+
+      }`,
+				{ slug }
+			)
+			.then((res) => res?.[0]),
+	]);
+	return { post };
+}
+export async function getAllProjectsWithSlug() {
+	const data = await client.fetch(
+		`*[_type == "project"]{ 'slug': slug.current }`
+	);
+	return data;
+}
+export async function getAllProjects(preview) {
+	const results = await getClient(preview)
+		.fetch(`*[_type == "project"] | order(publishedAt desc){
+      _id,
+	  'slug': slug.current,
+	  'coverImage': mainImage,
+
+    }`);
+	return getUniquePosts(results);
+}
+
+export async function getAllPodcasts(preview) {
+	const results = await getClient(preview)
+		.fetch(`*[_type == "podcast"] | order(publishedAt desc){
+      _id,
+	  link,
+	  'coverImage': mainImage,
+
+    }`);
+	return getUniquePosts(results);
 }

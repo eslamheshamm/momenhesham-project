@@ -22,26 +22,12 @@ const MenuItems = ({ className }) => {
 					</Link>
 				</li>{" "}
 				<li className="lg:mr-8 mt-2 lg:mt-0">
-					<Link href="/case-studies">
-						<a href="/case-studies" className="flex items-center uppercase">
-							<span>Case Studies</span>
+					<Link href="/projects">
+						<a href="/projects" className="flex items-center uppercase">
+							<span>Projects</span>
 						</a>
 					</Link>
 				</li>
-				<li className="lg:mr-8 mt-2 lg:mt-0">
-					<Link href="/widgets">
-						<a href="/widgets" className="flex items-center uppercase">
-							<span>Widgets</span>
-						</a>
-					</Link>
-				</li>
-				<li className="lg:mr-8 mt-2 lg:mt-0">
-					<Link href="/freebies">
-						<a href="/freebies" className="flex items-center uppercase">
-							<span>Freebies</span>
-						</a>
-					</Link>
-				</li>{" "}
 				<li className="mt-2 lg:mt-0">
 					<a href="#" target="_blank" className="flex items-center uppercase">
 						<Arrow className="mr-3" />
@@ -57,7 +43,7 @@ export default function Header() {
 	return (
 		<header
 			className={cn(
-				"mt-[60px] font-space   w-11/12 mx-auto lg:flex justify-between items-center"
+				"mt-[60px] font-NeueLight   w-11/12 mx-auto lg:flex justify-between items-center"
 			)}
 		>
 			<div className="flex justify-between">

@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "../../components/Link";
 import Layout from "../../components/layout";
 import { getAllPostsForPhilosophy } from "../../lib/api";
-import PostsPreview from "../../components/posts-preview";
+import PostsPreview from "../../components/blog/posts-preview";
 export default function Philosophy({ philosophyPosts }) {
 	const Posts = philosophyPosts;
 	console.log(Posts);

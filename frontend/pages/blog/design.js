@@ -4,7 +4,7 @@ import Head from "next/head";
 import Link from "../../components/Link";
 import Layout from "../../components/layout";
 import { getAllPostsForDesign } from "../../lib/api";
-import PostsPreview from "../../components/posts-preview";
+import PostsPreview from "../../components/blog/posts-preview";
 export default function Design({ designPosts }) {
 	const Posts = designPosts;
 	console.log(Posts);

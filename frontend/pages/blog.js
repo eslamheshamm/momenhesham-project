@@ -1,5 +1,5 @@
 import Head from "next/head";
-import PostsPreview from "../components/posts-preview";
+import PostsPreview from "../components/blog/posts-preview";
 import Layout from "../components/layout";
 import { getAllPostsForHome } from "../lib/api";
 import Link from "../components/Link";

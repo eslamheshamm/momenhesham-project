@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "../components/layout";
 import { getAllProjects } from "../lib/api";
 import ProjectsPreview from "../components/projects/projects-preview";
-export default function Index({ allPosts }) {
+export default function Projects({ allPosts }) {
 	const ALLPOSTS = allPosts;
 	return (
 		<Layout>

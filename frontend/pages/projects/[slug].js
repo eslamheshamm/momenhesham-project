@@ -9,14 +9,14 @@ import PostTitle from "../../components/post-title";
 import { imageBuilder } from "../../lib/sanity";
 import Link from "next/link";
 export default function Project({ post }) {
+	const Date = parseISO(post?.publishedAt);
 	const router = useRouter();
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
 	}
-	if (!isValid(parseISO(post.date))) {
+	if (!isValid(parseISO(post?.publishedAt))) {
 		return "No date";
 	}
-	const Date = parseISO(post?.date);
 	return (
 		<Layout>
 			<section className="w-11/12 my-24 mx-auto min-h-screen">
@@ -46,8 +46,8 @@ export default function Project({ post }) {
 									{post.title}
 								</h2>
 							)}
-							{post.date && Date && (
-								<time dateTime={post.date} className=" font-NeueLight">
+							{post.publishedAt && Date && (
+								<time dateTime={post.publishedAt} className=" font-NeueLight">
 									{format(Date, "LLLL yyyy")}
 								</time>
 							)}

@@ -158,7 +158,7 @@ export async function getProjectPost(slug, preview) {
 				'slug': slug.current,
 				body,
 				"links": links[],
-				'date': publishedAt,
+				 publishedAt,
 				'coverImage': mainImage
 
       }`,

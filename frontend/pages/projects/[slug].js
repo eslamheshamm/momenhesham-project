@@ -16,7 +16,7 @@ export default function Post({ post, preview }) {
 	if (!isValid(parseISO(post.date))) {
 		return "No date";
 	}
-	const date = parseISO(post.date);
+	const Date = parseISO(post.date);
 	return (
 		<Layout preview={preview}>
 			<section className="w-11/12 my-24 mx-auto min-h-screen">
@@ -48,7 +48,7 @@ export default function Post({ post, preview }) {
 							)}
 							{post.date && (
 								<time dateTime={post.date} className=" font-NeueLight">
-									{format(date, "LLLL yyyy")}
+									{format(Date, "LLLL yyyy")}
 								</time>
 							)}
 							{post.links && (
@@ -96,9 +96,6 @@ export default function Post({ post, preview }) {
 							)}
 							{post.body && <PostBody content={post.body} />}
 						</article>
-						{/* 
-						<Comments comments={post.comments} />
-						<Form _id={post._id} /> */}
 					</>
 				)}
 			</section>

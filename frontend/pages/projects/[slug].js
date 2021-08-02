@@ -17,7 +17,6 @@ export default function Post({ post, preview }) {
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
 	}
-	console.log(post, "post");
 	if (!isValid(parseISO(post.date))) {
 		return "No date";
 	}

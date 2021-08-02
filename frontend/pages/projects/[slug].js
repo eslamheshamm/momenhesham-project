@@ -17,7 +17,6 @@ export default function Project({ post, preview }) {
 		return "No date";
 	}
 	const Date = parseISO(post.date);
-	console.log(post.date, "date");
 	return (
 		<Layout preview={preview}>
 			<section className="w-11/12 my-24 mx-auto min-h-screen">
@@ -47,7 +46,7 @@ export default function Project({ post, preview }) {
 									{post.title}
 								</h2>
 							)}
-							{post.date && (
+							{post.date && Date && (
 								<time dateTime={post.date} className=" font-NeueLight">
 									{format(Date, "LLLL yyyy")}
 								</time>

@@ -10,7 +10,7 @@ import markdownStyles from "../../components/markdown-styles.module.css";
 import { TwitterShareButton } from "react-share";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-const Widget = ({ post, preview }) => {
+const Widget = ({ post }) => {
 	const [copy, setCopy] = React.useState(false);
 	const router = useRouter();
 	if (!router.isFallback && !post?.slug) {
@@ -18,7 +18,7 @@ const Widget = ({ post, preview }) => {
 	}
 
 	return (
-		<Layout preview={preview}>
+		<Layout>
 			<section className="w-11/12 my-24 mx-auto">
 				{router.isFallback ? (
 					<PostTitle>Loading…</PostTitle>

@@ -8,7 +8,7 @@ import { getProjectPost, getAllProjectsWithSlug } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import { imageBuilder } from "../../lib/sanity";
 import Link from "next/link";
-export default function Project({ post, preview }) {
+export default function Project({ post }) {
 	const router = useRouter();
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
@@ -16,9 +16,9 @@ export default function Project({ post, preview }) {
 	if (!isValid(parseISO(post.date))) {
 		return "No date";
 	}
-	const Date = parseISO(post.date);
+	const Date = parseISO(post?.date);
 	return (
-		<Layout preview={preview}>
+		<Layout>
 			<section className="w-11/12 my-24 mx-auto min-h-screen">
 				{router.isFallback ? (
 					<PostTitle>Loading…</PostTitle>

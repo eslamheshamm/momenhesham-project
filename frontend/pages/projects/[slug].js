@@ -1,15 +1,11 @@
 import { useRouter } from "next/router";
+import { isValid, parseISO, format } from "date-fns";
+import Head from "next/head";
 import ErrorPage from "next/error";
 import PostBody from "../../components/blog/post-body";
-import MoreStories from "../../components/blog/more-stories";
-import PostHeader from "../../components/blog/post-header";
 import Layout from "../../components/layout";
 import { getProjectPost, getAllProjectsWithSlug } from "../../lib/api";
 import PostTitle from "../../components/post-title";
-import Head from "next/head";
-import Form from "../../components/form";
-import Comments from "../../components/comments";
-import { isValid, parseISO, format } from "date-fns";
 import { imageBuilder } from "../../lib/sanity";
 import Link from "next/link";
 export default function Post({ post, preview }) {
@@ -51,7 +47,7 @@ export default function Post({ post, preview }) {
 								</h2>
 							)}
 							{post.date && (
-								<time className=" font-NeueLight">
+								<time dateTime={post.date} className=" font-NeueLight">
 									{format(date, "LLLL yyyy")}
 								</time>
 							)}

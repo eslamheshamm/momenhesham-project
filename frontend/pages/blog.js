@@ -1,12 +1,27 @@
+import React, { useState } from "react";
 import Head from "next/head";
 import PostsPreview from "../components/blog/posts-preview";
 import Layout from "../components/layout";
-import { getAllPostsForHome } from "../lib/api";
-import Link from "../components/Link";
-export default function Index({ allPosts }) {
-	// const heroPost = allPosts[0];
-	// const morePosts = allPosts.slice(1);
-	const ALLPOSTS = allPosts;
+import {
+	getAllPostsForHome,
+	getAllPostsForDesign,
+	getAllPostsForPhilosophy,
+	getAllPostsForPersonal,
+} from "../lib/api";
+export default function Blog({
+	allPosts,
+	designPosts,
+	philosophyPosts,
+	personalPosts,
+}) {
+	const AllPosts = allPosts;
+	const DesignPosts = designPosts;
+	const PersonalPosts = personalPosts;
+	const PhilosphyPosts = philosophyPosts;
+	const [all, SetAll] = useState(true);
+	const [design, SetDesign] = useState(false);
+	const [philosphy, setPhilosophy] = useState(false);
+	const [personal, setPersonal] = useState(false);
 	return (
 		<Layout>
 			<Head>
@@ -16,68 +31,94 @@ export default function Index({ allPosts }) {
 				{" "}
 				<ul className="flex my-6">
 					<li>
-						<Link
-							href="/blog"
-							activeClassName="font-bold border-0 text-white bg-black"
+						<button
+							className={
+								all
+									? "py-4 px-8 rounded-[36px] mr-4 font-bold border-0 text-white bg-black"
+									: "py-4 px-8 border border-black rounded-[36px] mr-4"
+							}
+							onClick={() => {
+								SetAll(true);
+								SetDesign(false);
+								setPersonal(false);
+								setPhilosophy(false);
+							}}
 						>
-							<a className="py-4 px-8 border border-black rounded-[36px] mr-4">
-								All
-							</a>
-						</Link>
+							All
+						</button>
 					</li>
 					<li>
-						<Link
-							href="/blog/design"
-							activeClassName="font-bold border-0 text-white bg-black"
+						<button
+							className={
+								design
+									? "py-4 px-8 rounded-[36px] mr-4 font-bold border-0 text-white bg-black"
+									: "py-4 px-8 border border-black rounded-[36px] mr-4"
+							}
+							onClick={() => {
+								SetDesign(true);
+								SetAll(false);
+								setPersonal(false);
+								setPhilosophy(false);
+							}}
 						>
-							<a className="py-4 px-8 border border-black rounded-[36px] mr-4">
-								Design
-							</a>
-						</Link>
+							Design
+						</button>
+					</li>
+					<li>
+						<button
+							className={
+								personal
+									? "py-4 px-8 rounded-[36px] mr-4 font-bold border-0 text-white bg-black"
+									: "py-4 px-8 border border-black rounded-[36px] mr-4"
+							}
+							onClick={() => {
+								SetAll(false);
+								SetDesign(false);
+								setPersonal(true);
+								setPhilosophy(false);
+							}}
+						>
+							Personal
+						</button>
 					</li>{" "}
 					<li>
-						<Link
-							href="/blog/personal"
-							activeClassName="font-bold border-0 text-white bg-black"
+						<button
+							className={
+								philosphy
+									? "py-4 px-8 rounded-[36px] mr-4 font-bold border-0 text-white bg-black"
+									: "py-4 px-8 border border-black rounded-[36px] mr-4"
+							}
+							onClick={() => {
+								SetAll(false);
+								SetDesign(false);
+								setPersonal(false);
+								setPhilosophy(true);
+							}}
 						>
-							<a className="py-4 px-8 border border-black rounded-[36px] mr-4">
-								Personal
-							</a>
-						</Link>
-					</li>{" "}
-					<li>
-						<Link
-							href="/blog/philosophy"
-							activeClassName="font-bold border-0 text-white bg-black"
-						>
-							<a className="py-4 px-8 border border-black rounded-[36px]">
-								Philosophy
-							</a>
-						</Link>
+							Philosophy
+						</button>
 					</li>
 				</ul>
 			</section>
-
-			{/* {heroPost && (
-						<HeroPost
-							title={heroPost.title}
-							coverImage={heroPost.coverImage}
-							date={heroPost.date}
-							author={heroPost.author}
-							slug={heroPost.slug}
-							excerpt={heroPost.excerpt}
-						/>
-					)} */}
-
-			{ALLPOSTS.length > 0 && <PostsPreview posts={ALLPOSTS} />}
+			{all && AllPosts.length > 0 && <PostsPreview posts={AllPosts} />}
+			{design && DesignPosts.length > 0 && <PostsPreview posts={DesignPosts} />}
+			{personal && PersonalPosts.length > 0 && (
+				<PostsPreview posts={PersonalPosts} />
+			)}
+			{philosphy && PhilosphyPosts.length > 0 && (
+				<PostsPreview posts={PhilosphyPosts} />
+			)}
 		</Layout>
 	);
 }
 
 export async function getStaticProps({ preview = false }) {
 	const allPosts = await getAllPostsForHome(preview);
+	const designPosts = await getAllPostsForDesign(preview);
+	const philosophyPosts = await getAllPostsForPhilosophy(preview);
+	const personalPosts = await getAllPostsForPersonal(preview);
 	return {
-		props: { allPosts, preview },
+		props: { allPosts, designPosts, philosophyPosts, personalPosts, preview },
 		revalidate: 1,
 	};
 }

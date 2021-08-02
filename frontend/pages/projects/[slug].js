@@ -16,6 +16,8 @@ export default function Project({ post, preview }) {
 	if (!isValid(parseISO(post.date))) {
 		return "No date";
 	}
+	const Date = parseISO(post.date);
+	console.log(post.date, "date");
 	return (
 		<Layout preview={preview}>
 			<section className="w-11/12 my-24 mx-auto min-h-screen">

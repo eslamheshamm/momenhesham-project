@@ -22,7 +22,13 @@ const postFields = `
   'slug': slug.current,
   'coverImage': mainImage,
 `;
-
+const BlogPostPreview = ` 
+	_id,
+	title,
+	excerpt,
+	'slug': slug.current,
+	'coverImage': mainImage,
+`;
 const getClient = (preview) => (preview ? previewClient : client);
 
 export async function getPreviewPostBySlug(slug) {
@@ -44,28 +50,28 @@ export async function getAllPostsWithSlug() {
 export async function getAllPostsForHome(preview) {
 	const results = await getClient(preview)
 		.fetch(`*[_type == "post"] | order(publishedAt desc){
-      ${postFields}
+      ${BlogPostPreview}
     }`);
 	return getUniquePosts(results);
 }
 export async function getAllPostsForDesign(preview) {
 	const results = await getClient(preview)
 		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Design"]._id)] | order(date desc, _updatedAt desc){
-      ${postFields}
+      ${BlogPostPreview}
     }`);
 	return getUniquePosts(results);
 }
 export async function getAllPostsForPhilosophy(preview) {
 	const results = await getClient(preview)
 		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Philosophy"]._id)] | order(date desc, _updatedAt desc){
-      ${postFields}
+      ${BlogPostPreview}
     }`);
 	return getUniquePosts(results);
 }
 export async function getAllPostsForPersonal(preview) {
 	const results = await getClient(preview)
 		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Personal"]._id)] | order(date desc, _updatedAt desc){
-      ${postFields}
+      ${BlogPostPreview}
     }`);
 	return getUniquePosts(results);
 }

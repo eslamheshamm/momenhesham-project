@@ -51,7 +51,7 @@ export default function Post({ post, preview }) {
 								</h2>
 							)}
 							{post.date && (
-								<time dateTime={post.date} className=" font-NeueLight">
+								<time dateTime={date} className=" font-NeueLight">
 									{format(date, "LLLL yyyy")}
 								</time>
 							)}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { imageBuilder } from "../../lib/sanity";
 export default function PostPreview({ title, coverImage, excerpt, slug }) {
 	return (
-		<article className="w-full ">
+		<article className="w-full">
 			<Link as={`/posts/${slug}`} href="/posts/[slug]">
 				<img
 					src={imageBuilder(coverImage)
@@ -10,7 +10,7 @@ export default function PostPreview({ title, coverImage, excerpt, slug }) {
 						.height(640)
 						.fit("scale")
 						.url()}
-					className=" object-cover w-[400px] h-[400px] cursor-pointer  rounded-2xl"
+					className=" object-cover cursor-pointer  rounded-2xl"
 				/>
 			</Link>
 			<h3 className="text-xl sm:text-2xl font-NeueLight font-medium  my-4 ">

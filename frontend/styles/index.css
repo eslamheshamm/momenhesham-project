@@ -39,3 +39,50 @@
 	animation-duration: 1.2s;
 	animation-iteration-count: infinite;
 }
+
+.showContact {
+	animation-name: ShowContact;
+	animation-duration: 0.9s;
+	animation-iteration-count: 1;
+	transition: ;
+}
+@keyframes ShowContact {
+	0% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+.navBarBackground {
+}
+
+.bg-area {
+	position: fixed;
+	left: -50%;
+	right: -50%;
+	top: 0;
+	bottom: 0;
+	animation: ShowContact 1s ease-in-out 1 alternate;
+	background-color: black;
+	z-index: -1;
+}
+
+.navbarAnimation {
+	animation-name: fadeIn;
+	animation-duration: 0.3s;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeIn {
+	0% {
+		background-color: transparent;
+		opacity: 0;
+		transform: translateY(60px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Head from "next/head";
 import PostsPreview from "../components/blog/posts-preview";
 import Layout from "../components/layout";
+import cn from "classnames";
 import {
-	getAllPostsForHome,
+	getAllPostsForBlog,
 	getAllPostsForDesign,
 	getAllPostsForPhilosophy,
 	getAllPostsForPersonal,
@@ -27,16 +28,15 @@ export default function Blog({
 			<Head>
 				<title>Blog | Momen Hesham</title>
 			</Head>
-			<section className="w-11/12 mx-auto mt-16">
+			<section className="w-11/12 sm:w-10/12 mx-auto mt-7 mb-8">
 				{" "}
-				<ul className="flex my-6">
+				<ul className="flex flex-wrap sm:flex-nowrap justify-around sm:justify-start   text-sm sm:text-base font-NeueLight">
 					<li>
 						<button
-							className={
-								all
-									? "py-4 px-8 rounded-[36px] mr-4 font-bold border-0 text-white bg-black"
-									: "py-4 px-8 border border-black rounded-[36px] mr-4"
-							}
+							className={cn(
+								"p-3 sm:py-4 sm:px-8 w-32 sm:w-auto  border border-black rounded-3xl sm:rounded-[36px]  my-2 sm:my-0 sm:mr-4",
+								all && "border-0 text-white bg-black font-NeueBold"
+							)}
 							onClick={() => {
 								SetAll(true);
 								SetDesign(false);
@@ -49,11 +49,10 @@ export default function Blog({
 					</li>
 					<li>
 						<button
-							className={
-								design
-									? "py-4 px-8 rounded-[36px] mr-4 font-bold border-0 text-white bg-black"
-									: "py-4 px-8 border border-black rounded-[36px] mr-4"
-							}
+							className={cn(
+								"p-3 sm:py-4 sm:px-8 w-32 sm:w-auto  border border-black rounded-3xl sm:rounded-[36px]  my-2 sm:my-0 sm:mr-4 ",
+								design && "font-NeueBold border-0 text-white bg-black"
+							)}
 							onClick={() => {
 								SetDesign(true);
 								SetAll(false);
@@ -66,11 +65,10 @@ export default function Blog({
 					</li>
 					<li>
 						<button
-							className={
-								personal
-									? "py-4 px-8 rounded-[36px] mr-4 font-bold border-0 text-white bg-black"
-									: "py-4 px-8 border border-black rounded-[36px] mr-4"
-							}
+							className={cn(
+								"p-3 sm:py-4 sm:px-8 w-32 sm:w-auto  border border-black rounded-3xl sm:rounded-[36px]  my-2 sm:my-0 sm:mr-4 ",
+								personal && "font-NeueBold border-0 text-white bg-black"
+							)}
 							onClick={() => {
 								SetAll(false);
 								SetDesign(false);
@@ -83,11 +81,10 @@ export default function Blog({
 					</li>{" "}
 					<li>
 						<button
-							className={
-								philosphy
-									? "py-4 px-8 rounded-[36px] mr-4 font-bold border-0 text-white bg-black"
-									: "py-4 px-8 border border-black rounded-[36px] mr-4"
-							}
+							className={cn(
+								"p-3 sm:py-4 sm:px-8 w-32 sm:w-auto  border border-black rounded-3xl sm:rounded-[36px]  my-2 sm:my-0 mx-0 ",
+								philosphy && "font-NeueBold border-0 text-white bg-black"
+							)}
 							onClick={() => {
 								SetAll(false);
 								SetDesign(false);
@@ -113,7 +110,7 @@ export default function Blog({
 }
 
 export async function getStaticProps({ preview = false }) {
-	const allPosts = await getAllPostsForHome(preview);
+	const allPosts = await getAllPostsForBlog(preview);
 	const designPosts = await getAllPostsForDesign(preview);
 	const philosophyPosts = await getAllPostsForPhilosophy(preview);
 	const personalPosts = await getAllPostsForPersonal(preview);

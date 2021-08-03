@@ -10,7 +10,9 @@ export default function Projects({ allPosts }) {
 				<title>Projects | Momen Hesham</title>
 			</Head>
 
-			{ALLPOSTS.length > 0 && <ProjectsPreview posts={ALLPOSTS} />}
+			{ALLPOSTS.length > 0 && (
+				<ProjectsPreview className="mt-24" posts={ALLPOSTS} />
+			)}
 		</Layout>
 	);
 }

@@ -4,11 +4,6 @@ export default {
 	type: "document",
 	fields: [
 		{
-			name: "title",
-			title: "Title",
-			type: "string",
-		},
-		{
 			name: "mainImage",
 			title: "Main image",
 			type: "image",
@@ -16,6 +11,24 @@ export default {
 				hotspot: true,
 			},
 		},
+		{
+			name: "title",
+			title: "Title",
+			type: "string",
+		},
+		{
+			name: "excerpt",
+			type: "text",
+			title: "Summery",
+			validation: (Rule) => Rule.required(),
+		},
+		{
+			name: "links",
+			title: "Links",
+			type: "array",
+			of: [{ type: "cta" }],
+		},
+
 		{
 			name: "publishedAt",
 			title: "Published at",

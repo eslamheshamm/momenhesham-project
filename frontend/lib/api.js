@@ -47,7 +47,7 @@ export async function getAllPostsWithSlug() {
 	return data;
 }
 
-export async function getAllPostsForHome(preview) {
+export async function getAllPostsForBlog(preview) {
 	const results = await getClient(preview)
 		.fetch(`*[_type == "post"] | order(publishedAt desc){
       ${BlogPostPreview}
@@ -191,7 +191,62 @@ export async function getAllPodcasts(preview) {
       _id,
 	  link,
 	  'coverImage': mainImage,
-
+	  "links": links[],
+	  excerpt,
+	  title
     }`);
-	return getUniquePosts(results);
+	return results;
+}
+// export async function getAllPostsForHome(preview) {
+// 	const results = await getClient(preview)
+// 		.fetch(`*[_type == "post"] | order(publishedAt desc)[0..1] {
+// 			_id,
+// 			title,
+// 			excerpt,
+// 			'slug': slug.current,
+// 			'coverImage': mainImage,
+// 			'projects': *[_type == "project"] | order(publishedAt desc) {
+// 				_id,
+// 				link,
+// 				'coverImage': mainIma
+// 			},
+// 			'podcasts': *[_type == "podcast"] | order(publishedAt desc){
+// 				_id,
+// 				link,
+// 				'coverImage': mainImage,
+
+// 			  }
+// 		  }`);
+// 	return getUniquePosts(results);
+// }
+
+export async function getAllPostsForHome(preview) {
+	const curClient = getClient(preview);
+	const [projects, blogPosts, podcasts] = await Promise.all([
+		curClient.fetch(
+			`*[_type == "project"] | order(publishedAt desc){
+					_id,
+					'slug': slug.current,
+					'coverImage': mainImage,
+			  
+				  }[0..2]`
+		),
+		curClient.fetch(
+			`*[_type == "post"] | order(publishedAt desc) {
+				_id,
+				title,
+				excerpt,
+				'slug': slug.current,
+				'coverImage': mainImage }[0..2]`
+		),
+		curClient.fetch(
+			`*[_type == "podcast"] | order(publishedAt desc){
+				_id,
+				link,
+				'coverImage': mainImage,
+		  
+			  }[0..2]`
+		),
+	]);
+	return { projects, blogPosts: getUniquePosts(blogPosts), podcasts };
 }

@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import cn from "classnames";
-import Footer from "../components/footer";
-import { Divide as Hamburger } from "hamburger-react";
-
-import Observer from "../assets/observer-logo";
 import Head from "next/head";
+
+import cn from "classnames";
+import { Divide as Hamburger } from "hamburger-react";
+import { useMediaQuery } from "react-responsive";
+import Observer from "../assets/observer-logo";
+import Footer from "../components/footer";
+
 export default function Layout(props) {
 	const { children, className } = props;
 	const [contact, setContact] = useState(false);
 	const [isOpen, setOpen] = useState(false);
+	const isDesktop = useMediaQuery({ minWidth: 992 });
 
 	const showContact = () => {
 		setContact((contact) => !contact);
@@ -25,7 +28,7 @@ export default function Layout(props) {
 		>
 			<header
 				className={cn(
-					"pt-[60px] font-NeueLight w-11/12   sm:w-10/12 mx-auto flex justify-between items-center",
+					"pt-[60px] font-NeueLight w-11/12   xl:w-10/12 mx-auto flex justify-between items-center",
 					contact ? "text-white" : null
 				)}
 			>
@@ -57,90 +60,95 @@ export default function Layout(props) {
 					</a>
 				</Link>
 				<nav>
-					<Hamburger toggled={isOpen} toggle={setOpen} />
+					{!isDesktop && <Hamburger toggled={isOpen} toggle={setOpen} />}
 
-					{/* <ul
-						className={cn(
-							"lg:text-lg xl:text-xl font-bold uppercase flex items-center",
-							className
-						)}
-					>
-						<li className="lg:mr-8">
-							<a
-								href="#"
-								target="_blank"
-								className="flex items-center "
-								onClick={() => {
-									setContact(false);
-								}}
-							>
-								<Arrow
-									className={cn("mr-3", contact ? "text-white" : "text-black")}
-								/>
-								<span>Youtube</span>
-							</a>
-						</li>
-						<li className="lg:mr-8 mt-2 lg:mt-0">
-							<Link href="/blog">
+					{isDesktop && (
+						<ul
+							className={cn(
+								" font-bold uppercase flex items-center",
+								className
+							)}
+						>
+							<li className="lg:mr-4 xl:mr-8 mr-2">
 								<a
-									href="/blog"
+									href="#"
+									target="_blank"
 									className="flex items-center "
 									onClick={() => {
 										setContact(false);
 									}}
 								>
-									<span>Blog</span>
+									<Arrow
+										className={cn(
+											"mr-3",
+											contact ? "text-white" : "text-black"
+										)}
+									/>
+									<span>Youtube</span>
 								</a>
-							</Link>
-						</li>{" "}
-						<li className="lg:mr-8 mt-2 lg:mt-0">
-							<Link href="/projects">
+							</li>
+							<li className="lg:mr-4 xl:mr-8 mr-2">
+								<Link href="/blog">
+									<a
+										href="/blog"
+										className="flex items-center "
+										onClick={() => {
+											setContact(false);
+										}}
+									>
+										<span>Blog</span>
+									</a>
+								</Link>
+							</li>{" "}
+							<li className="lg:mr-4 xl:mr-8  mr-2">
+								<Link href="/projects">
+									<a
+										href="/projects"
+										className="flex items-center "
+										onClick={() => {
+											setContact(false);
+										}}
+									>
+										<span>Projects</span>
+									</a>
+								</Link>
+							</li>
+							<li className="mr-2 lg:mr-4 xl:mr-8">
 								<a
-									href="/projects"
+									href="#"
+									target="_blank"
 									className="flex items-center "
 									onClick={() => {
 										setContact(false);
 									}}
 								>
-									<span>Projects</span>
+									<Arrow className="mr-3" />
+									<span>freebies</span>
 								</a>
-							</Link>
-						</li>
-						<li className="mt-2 lg:mt-0 lg:mr-8">
-							<a
-								href="#"
-								target="_blank"
-								className="flex items-center "
-								onClick={() => {
-									setContact(false);
-								}}
-							>
-								<Arrow className="mr-3" />
-								<span>freebies</span>
-							</a>
-						</li>
-						<li className="mt-2 lg:mt-0 lg:mr-8">
-							<a
-								href="#"
-								target="_blank"
-								className="flex items-center "
-								onClick={() => {
-									setContact(false);
-								}}
-							>
-								<Arrow className="mr-3" />
-								<span>résume</span>
-							</a>
-						</li>
-						<li className="mt-2 lg:mt-0">
-							<button
-								className="py-5 px-10 font-NeueBold text-sm bg-[#2B2B2B] text-white rounded-3xl"
-								onClick={showContact}
-							>
-								Let’s Work Together?
-							</button>
-						</li>
-					</ul> */}
+							</li>
+							<li className="mr-2 lg:mr-4 xl:mr-8">
+								<a
+									href="#"
+									target="_blank"
+									className="flex items-center "
+									onClick={() => {
+										setContact(false);
+									}}
+								>
+									<Arrow className="mr-3" />
+									<span>résume</span>
+								</a>
+							</li>
+							<li>
+								<button
+									className="py-5 px-10 font-NeueBold text-xs bg-[#2B2B2B] text-white rounded-3xl"
+									onClick={showContact}
+								>
+									Let’s Work Together?
+								</button>
+							</li>
+						</ul>
+					)}
 				</nav>
 			</header>
 			<div className={cn(isOpen && "hidden", contact && "hidden")}>
@@ -151,7 +159,7 @@ export default function Layout(props) {
 				<div className="navbarAnimation flex flex-col items-center w-10/12 mx-auto justify-center min-h-screen">
 					<ul
 						className={cn(
-							"lg:text-lg text-4xl font-bold uppercase",
+							" text-xl font-bold font-NeueLight uppercase flex flex-col items-start justify-center",
 
 							isOpen && contact && "text-white"
 						)}

@@ -85,6 +85,19 @@ export default function Layout(props) {
 									</Link>
 								</li>
 								<li className="lg:mr-4 xl:mr-8 mr-2">
+									<Link href="/about">
+										<a
+											href="/about"
+											className="flex items-center "
+											onClick={() => {
+												setContact(false);
+											}}
+										>
+											<span>about</span>
+										</a>
+									</Link>
+								</li>
+								<li className="lg:mr-4 xl:mr-8 mr-2">
 									<Link href="/blog">
 										<a
 											href="/blog"
@@ -168,6 +181,20 @@ export default function Layout(props) {
 								</Link>
 							</li>
 							<li className="mt-6">
+								<Link href="/about">
+									<a
+										href="/about"
+										className="flex items-center "
+										onClick={() => {
+											setContact(false);
+											setOpen(false);
+										}}
+									>
+										<span>about</span>
+									</a>
+								</Link>
+							</li>
+							<li className="mt-6">
 								<Link href="/blog">
 									<a
 										href="/blog"
@@ -180,7 +207,7 @@ export default function Layout(props) {
 										<span>Blog</span>
 									</a>
 								</Link>
-							</li>{" "}
+							</li>
 							<li className="  mt-6">
 								<a
 									href="http://bit.ly/2Y7dY7C"

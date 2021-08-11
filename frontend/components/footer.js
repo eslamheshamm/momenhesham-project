@@ -4,7 +4,7 @@ export default function Footer(props) {
 	return (
 		<footer
 			className={cn(
-				"w-10/12 mx-auto absolute bottom-0 my-2 mb-7 right-0 left-0 flex items-center justify-between",
+				"w-11/12 xl:w-10/12 mx-auto absolute bottom-0 my-2 mb-7 right-0 left-0 flex items-center justify-between",
 				className
 			)}
 		>

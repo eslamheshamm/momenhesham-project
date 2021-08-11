@@ -33,6 +33,11 @@ export default {
 			validation: (Rule) => Rule.required(),
 		},
 		{
+			name: "date",
+			title: "Released Date",
+			type: "string",
+		},
+		{
 			name: "links",
 			title: "Links",
 			type: "array",

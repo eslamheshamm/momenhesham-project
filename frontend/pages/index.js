@@ -28,9 +28,8 @@ export default function Index({ allPosts }) {
 					</Link>
 				</h2>
 				<p className="font-NeueLight opacity-70 mt-9">
-					Understand the most critical areas of improvements for your{" "}
-					<br className="hidden md:block" />
-					product. Extract powerful insights and assumptions to test.
+					Collection of projects I've worked on and would love to get your
+					feedback on{" "}
 				</p>
 			</section>
 			{AllPosts && AllPosts.projects.length > 0 && (
@@ -48,9 +47,9 @@ export default function Index({ allPosts }) {
 					</Link>
 				</h2>
 				<p className="font-NeueLight opacity-70 mt-9">
-					Understand the most critical areas of improvements for your{" "}
-					<br className="hidden md:block" /> product. Extract powerful insights
-					and assumptions to test.
+					I love to share thoughts and discuss it to see the different
+					perspectives, <br className="hidden md:block" />
+					and idea is more clear when it comes out.
 				</p>
 			</section>
 			{AllPosts && AllPosts.blogPosts.length > 0 && (
@@ -68,9 +67,9 @@ export default function Index({ allPosts }) {
 					</Link>
 				</h2>
 				<p className="font-NeueLight opacity-70 mt-9">
-					Understand the most critical areas of improvements for your{" "}
-					<br className="hidden md:block" /> product. Extract powerful insights
-					and assumptions to test.
+					another platform for sharing thoughts and discussing it with people
+					who has <br className="hidden md:block" /> good experience in the
+					industry or love discussions.{" "}
 				</p>
 			</section>
 			{AllPosts && AllPosts.podcasts.length > 0 && (

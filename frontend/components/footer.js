@@ -4,33 +4,45 @@ export default function Footer(props) {
 	return (
 		<footer
 			className={cn(
-				"w-10/12 mx-auto absolute bottom-0 my-2 mb-7 right-0 left-0 flex items-center justify-center sm:justify-between",
+				"w-10/12 mx-auto absolute bottom-0 my-2 mb-7 right-0 left-0 flex items-center justify-between",
 				className
 			)}
 		>
-			<h2 className=" font-bold hidden sm:block">© 2021 Momen Hesham</h2>
+			<h2 className=" font-bold text-xs sm:text-lg">© 2021 Momen Hesham</h2>
 			<ul className="flex">
 				<li className="mr-3">
-					<a href="http://" target="_blank" rel="noopener noreferrer">
+					<a
+						href="https://dribbble.com/momenhshamahmed"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<Dribble svgColor={svgColor} />
 					</a>
 				</li>
-				<li className="mr-3">
+				{/* <li className="mr-3">
 					<a href="http://" target="_blank" rel="noopener noreferrer">
 						<Instagram svgColor={svgColor} />
 					</a>
-				</li>
+				</li> */}
 				<li className="mr-3">
-					<a href="http://" target="_blank" rel="noopener noreferrer">
+					<a
+						href="https://dribbble.com/momenhshamahmed"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<Linkedin svgColor={svgColor} />
 					</a>
 				</li>
 				<li className="mr-3">
-					<a href="http://" target="_blank" rel="noopener noreferrer">
+					<a
+						href="https://dribbble.com/momenhshamahmed"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<Medium svgColor={svgColor} />
 					</a>
 				</li>
-				<li className="mr-3">
+				{/* <li className="mr-3">
 					<a href="http://" target="_blank" rel="noopener noreferrer">
 						<Twitter svgColor={svgColor} />
 					</a>
@@ -39,9 +51,13 @@ export default function Footer(props) {
 					<a href="http://" target="_blank" rel="noopener noreferrer">
 						<Pinterest svgColor={svgColor} />
 					</a>
-				</li>
+				</li> */}
 				<li>
-					<a href="http://" target="_blank" rel="noopener noreferrer">
+					<a
+						href="mailto:hi@observer.studio?subject = Feedback&body = Message"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<Email svgColor={svgColor} />
 					</a>
 				</li>

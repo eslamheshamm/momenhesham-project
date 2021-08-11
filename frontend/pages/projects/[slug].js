@@ -46,11 +46,7 @@ export default function Project({ post }) {
 									{post.title}
 								</h2>
 							)}
-							{post.publishedAt && Date && (
-								<time dateTime={post.publishedAt} className=" font-NeueLight">
-									{format(Date, "LLLL yyyy")}
-								</time>
-							)}
+							{post.date && <p className="font-NeueLight">{post.date}</p>}
 							{post.links && (
 								<ul className="flex font-NeueBold text-sm mt-5 mb-6">
 									{post.links &&

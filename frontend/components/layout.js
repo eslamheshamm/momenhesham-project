@@ -7,7 +7,7 @@ import { Divide as Hamburger } from "hamburger-react";
 import { useMediaQuery } from "react-responsive";
 import Observer from "../assets/observer-logo";
 import Footer from "../components/footer";
-
+import Meta from "./meta";
 export default function Layout(props) {
 	const { children, className } = props;
 	const [contact, setContact] = useState(false);
@@ -19,57 +19,154 @@ export default function Layout(props) {
 		setOpen(false);
 	};
 	return (
-		<main
-			className={cn(
-				"min-h-screen h-full pb-24 font-space relative",
-				className,
-				isOpen ? "overflow-hidden" : null
-			)}
-		>
-			<header
+		<div>
+			<Meta />
+			<main
 				className={cn(
-					"pt-[60px] font-NeueLight w-11/12   xl:w-10/12 mx-auto flex justify-between items-center",
-					contact ? "text-white" : null
+					"min-h-screen h-full pb-24 font-space relative",
+					className,
+					isOpen ? "overflow-hidden" : null
 				)}
 			>
-				<Link href="/">
-					<a
-						href="/"
-						className="flex items-center w-[250px]"
-						onClick={() => {
-							setContact(false);
-							setOpen(false);
-						}}
-					>
-						<Observer svgColor={contact ? "white" : "black"} />
-						<div
-							className={cn(
-								" h-4  mx-3 w-[1px]",
-								contact ? "bg-white" : "bg-[#B4B4B4]",
-								isOpen && "text-white"
-							)}
-						></div>
-						<span
-							className={cn(
-								"text-xs sm:text-sm font-normal flex-none",
-								contact ? "text-white" : "text-[#B4B4B4] "
-							)}
+				<header
+					className={cn(
+						"pt-[60px] font-NeueLight w-11/12   xl:w-10/12 mx-auto flex justify-between items-center",
+						contact ? "text-white" : null
+					)}
+				>
+					<Link href="/">
+						<a
+							href="/"
+							className="flex items-center w-[250px]"
+							onClick={() => {
+								setContact(false);
+								setOpen(false);
+							}}
 						>
-							Momen Hesham
-						</span>
-					</a>
-				</Link>
-				<nav>
-					{!isDesktop && <Hamburger toggled={isOpen} toggle={setOpen} />}
+							<Observer svgColor={contact ? "white" : "black"} />
+							<div
+								className={cn(
+									" h-4  mx-3 w-[1px]",
+									contact ? "bg-white" : "bg-[#B4B4B4]",
+									isOpen && "text-white"
+								)}
+							></div>
+							<span
+								className={cn(
+									"text-xs sm:text-sm font-normal flex-none",
+									contact ? "text-white" : "text-[#B4B4B4] "
+								)}
+							>
+								Momen Hesham
+							</span>
+						</a>
+					</Link>
+					<nav>
+						{!isDesktop && <Hamburger toggled={isOpen} toggle={setOpen} />}
 
-					{isDesktop && (
+						{isDesktop && (
+							<ul
+								className={cn(
+									" font-bold uppercase flex items-center",
+									className
+								)}
+							>
+								<li className="lg:mr-4 xl:mr-8 mr-2">
+									<a
+										href="#"
+										target="_blank"
+										className="flex items-center "
+										onClick={() => {
+											setContact(false);
+										}}
+									>
+										<Arrow
+											className={cn(
+												"mr-3",
+												contact ? "text-white" : "text-black"
+											)}
+										/>
+										<span>Youtube</span>
+									</a>
+								</li>
+								<li className="lg:mr-4 xl:mr-8 mr-2">
+									<Link href="/blog">
+										<a
+											href="/blog"
+											className="flex items-center "
+											onClick={() => {
+												setContact(false);
+											}}
+										>
+											<span>Blog</span>
+										</a>
+									</Link>
+								</li>{" "}
+								<li className="lg:mr-4 xl:mr-8  mr-2">
+									<Link href="/projects">
+										<a
+											href="/projects"
+											className="flex items-center "
+											onClick={() => {
+												setContact(false);
+											}}
+										>
+											<span>Projects</span>
+										</a>
+									</Link>
+								</li>
+								<li className="mr-2 lg:mr-4 xl:mr-8">
+									<a
+										href="#"
+										target="_blank"
+										className="flex items-center "
+										onClick={() => {
+											setContact(false);
+										}}
+									>
+										<Arrow className="mr-3" />
+										<span>freebies</span>
+									</a>
+								</li>
+								<li className="mr-2 lg:mr-4 xl:mr-8">
+									<a
+										href="#"
+										target="_blank"
+										className="flex items-center "
+										onClick={() => {
+											setContact(false);
+										}}
+									>
+										<Arrow className="mr-3" />
+										<span>résume</span>
+									</a>
+								</li>
+								<li>
+									<button
+										className="py-5 px-10 font-NeueBold text-xs bg-[#2B2B2B] text-white rounded-3xl"
+										onClick={showContact}
+									>
+										Let’s Work Together?
+									</button>
+								</li>
+							</ul>
+						)}
+					</nav>
+				</header>
+				<div className={cn(isOpen && "hidden", contact && "hidden")}>
+					{children}
+				</div>
+				{contact && <div className={cn("min-h-screen bg-area")}></div>}
+				{isOpen ? (
+					<div className="navbarAnimation flex flex-col items-center w-10/12 mx-auto justify-center h-[75vh]">
 						<ul
 							className={cn(
-								" font-bold uppercase flex items-center",
-								className
+								" text-xl font-bold font-NeueLight uppercase flex flex-col items-start justify-center",
+
+								isOpen && contact && "text-white"
 							)}
 						>
-							<li className="lg:mr-4 xl:mr-8 mr-2">
+							<li className="">
 								<a
 									href="#"
 									target="_blank"
@@ -87,192 +184,105 @@ export default function Layout(props) {
 									<span>Youtube</span>
 								</a>
 							</li>
-							<li className="lg:mr-4 xl:mr-8 mr-2">
+							<li className="mt-6">
 								<Link href="/blog">
 									<a
 										href="/blog"
 										className="flex items-center "
 										onClick={() => {
 											setContact(false);
+											setOpen(false);
 										}}
 									>
 										<span>Blog</span>
 									</a>
 								</Link>
 							</li>{" "}
-							<li className="lg:mr-4 xl:mr-8  mr-2">
+							<li className="  mt-6">
 								<Link href="/projects">
 									<a
 										href="/projects"
 										className="flex items-center "
 										onClick={() => {
 											setContact(false);
+											setOpen(false);
 										}}
 									>
 										<span>Projects</span>
 									</a>
 								</Link>
 							</li>
-							<li className="mr-2 lg:mr-4 xl:mr-8">
+							<li className=" mt-6">
 								<a
 									href="#"
 									target="_blank"
 									className="flex items-center "
 									onClick={() => {
 										setContact(false);
+										setOpen(false);
 									}}
 								>
 									<Arrow className="mr-3" />
 									<span>freebies</span>
 								</a>
 							</li>
-							<li className="mr-2 lg:mr-4 xl:mr-8">
+							<li className=" mt-6">
 								<a
 									href="#"
 									target="_blank"
 									className="flex items-center "
 									onClick={() => {
 										setContact(false);
+										setOpen(false);
 									}}
 								>
 									<Arrow className="mr-3" />
 									<span>résume</span>
 								</a>
 							</li>
-							<li>
+							<li className=" mt-6">
 								<button
-									className="py-5 px-10 font-NeueBold text-xs bg-[#2B2B2B] text-white rounded-3xl"
+									className="py-5 px-10 font-NeueBold text-sm bg-[#2B2B2B] text-white rounded-3xl"
 									onClick={showContact}
 								>
 									Let’s Work Together?
 								</button>
 							</li>
 						</ul>
+					</div>
+				) : null}
+				<section
+					className={cn(
+						"text-white flex flex-col items-center justify-center h-[75vh] text-center",
+						isOpen && "hidden",
+						!contact && "hidden "
 					)}
-				</nav>
-			</header>
-			<div className={cn(isOpen && "hidden", contact && "hidden")}>
-				{children}
-			</div>
-			{contact && <div className={cn("min-h-screen bg-area")}></div>}
-			{isOpen ? (
-				<div className="navbarAnimation flex flex-col items-center w-10/12 mx-auto justify-center min-h-screen">
-					<ul
-						className={cn(
-							" text-xl font-bold font-NeueLight uppercase flex flex-col items-start justify-center",
-
-							isOpen && contact && "text-white"
-						)}
-					>
-						<li className="">
-							<a
-								href="#"
-								target="_blank"
-								className="flex items-center "
-								onClick={() => {
-									setContact(false);
-								}}
-							>
-								<Arrow
-									className={cn("mr-3", contact ? "text-white" : "text-black")}
-								/>
-								<span>Youtube</span>
-							</a>
-						</li>
-						<li className="mt-6">
-							<Link href="/blog">
-								<a
-									href="/blog"
-									className="flex items-center "
-									onClick={() => {
-										setContact(false);
-										setOpen(false);
-									}}
-								>
-									<span>Blog</span>
-								</a>
-							</Link>
-						</li>{" "}
-						<li className="  mt-6">
-							<Link href="/projects">
-								<a
-									href="/projects"
-									className="flex items-center "
-									onClick={() => {
-										setContact(false);
-										setOpen(false);
-									}}
-								>
-									<span>Projects</span>
-								</a>
-							</Link>
-						</li>
-						<li className=" mt-6">
-							<a
-								href="#"
-								target="_blank"
-								className="flex items-center "
-								onClick={() => {
-									setContact(false);
-									setOpen(false);
-								}}
-							>
-								<Arrow className="mr-3" />
-								<span>freebies</span>
-							</a>
-						</li>
-						<li className=" mt-6">
-							<a
-								href="#"
-								target="_blank"
-								className="flex items-center "
-								onClick={() => {
-									setContact(false);
-									setOpen(false);
-								}}
-							>
-								<Arrow className="mr-3" />
-								<span>résume</span>
-							</a>
-						</li>
-						<li className=" mt-6">
-							<button
-								className="py-5 px-10 font-NeueBold text-sm bg-[#2B2B2B] text-white rounded-3xl"
-								onClick={showContact}
-							>
-								Let’s Work Together?
-							</button>
-						</li>
-					</ul>
-				</div>
-			) : null}
-			<section
-				className={cn(
-					"text-white flex flex-col items-center justify-center min-h-screen text-center",
-					isOpen && "hidden",
-					!contact && "hidden "
-				)}
-			>
-				<Head>
-					<title>Contact us | Momen Hesham</title>
-				</Head>
-				<h2 className="font-space text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-					Wanna work together?
-				</h2>
-				<h3 className="font-space text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-6">
-					I’d love to hear about <br className="md:hidden" /> your future
-					projects.
-				</h3>
-				<p className="font-NeueLight text-2xl sm:text-3xl  lg:text-5xl mb-3">
-					momen@observer.studio
-				</p>
-				<Signture />
-			</section>
-			<Footer
-				svgColor={contact ? "white" : "black"}
-				className={contact ? "text-white" : null}
-			/>
-		</main>
+				>
+					{contact && (
+						<Head>
+							<title>Contact us | Momen Hesham</title>
+						</Head>
+					)}
+					<h2 className="font-space text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+						Wanna work together?
+					</h2>
+					<h3 className="font-space text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-6">
+						I’d love to hear about <br className="md:hidden" /> your future
+						projects.
+					</h3>
+					<p className="font-NeueLight text-2xl sm:text-3xl  lg:text-5xl mb-3">
+						<a href="mailto:momen@observer.studio?subject = Feedback&body = Message">
+							momen@observer.studio
+						</a>
+					</p>
+					<Signture />
+				</section>
+				<Footer
+					svgColor={contact ? "white" : "black"}
+					className={contact ? "text-white" : null}
+				/>
+			</main>
+		</div>
 	);
 }
 

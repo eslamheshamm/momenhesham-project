@@ -10,17 +10,16 @@ export default function PodcastPreview({
 }) {
 	return (
 		<article className={cn(className)}>
-			<figure>
-				{" "}
+			<figure className="">
 				<a href={`${link}`} target="_blank" rel="noopener noreferrer">
 					<img
 						src={imageBuilder(coverImage).url()}
-						className="  object-cover  rounded-[56px]"
+						className="  object-cover rounded-3xl  lg:rounded-[56px]  "
 					/>
 				</a>
 			</figure>
 
-			<div className="flex flex-col">
+			<div className="flex flex-col ml-9 mt-20">
 				<h2 className="font-space font-bold text-2xl ">{title}</h2>
 				<p className="my-6 font-NeueLight">{excerpt}</p>
 				{links && (

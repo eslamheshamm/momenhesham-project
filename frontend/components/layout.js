@@ -30,7 +30,7 @@ export default function Layout(props) {
 			>
 				<header
 					className={cn(
-						"pt-[60px] font-NeueLight w-11/12   xl:w-10/12 mx-auto flex justify-between items-center",
+						"py-7 font-NeueLight w-11/12   xl:w-10/12 mx-auto flex justify-between items-center",
 						contact ? "text-white" : null
 					)}
 				>

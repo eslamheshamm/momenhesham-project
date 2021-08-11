@@ -5,7 +5,7 @@ import { getAllPostsForHome } from "../lib/api";
 import ProjectsPreview from "../components/projects/projects-preview";
 import PostsPreview from "../components/blog/posts-preview";
 import PodcastsPreview from "../components/podcasts/podcasts-preview";
-
+import { imageBuilder } from "../lib/sanity";
 import SectionOne from "../components/home/sectionOne";
 export default function Index({ allPosts }) {
 	const AllPosts = allPosts;
@@ -72,12 +72,28 @@ export default function Index({ allPosts }) {
 					industry or love discussions.{" "}
 				</p>
 			</section>
-			{AllPosts && AllPosts.podcasts.length > 0 && (
-				<PodcastsPreview
-					className="mt-[104px] md:grid-cols-2 place-items-center mb-48"
-					posts={AllPosts.podcasts}
-				/>
-			)}
+
+			<section className="mt-[104px] w-11/12 sm:w-10/12 mx-auto  grid md:grid-cols-2 gap-6 place-items-center items-center mb-48">
+				{AllPosts &&
+					AllPosts.podcasts.length > 0 &&
+					AllPosts.podcasts.map((podcast) => {
+						console.log(podcast);
+						return (
+							<figure>
+								<a
+									href={`${podcast.link}`}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<img
+										src={imageBuilder(podcast.coverImage).url()}
+										className="  object-cover rounded-3xl  lg:rounded-[56px] "
+									/>
+								</a>
+							</figure>
+						);
+					})}
+			</section>
 		</Layout>
 	);
 }

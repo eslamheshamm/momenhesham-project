@@ -5,7 +5,7 @@ export default function PodcastsPreview(props) {
 	return (
 		<section
 			className={cn(
-				"grid gap-12 md:gap-6 mx-auto w-11/12 sm:w-10/12",
+				"grid md:grid-cols-2 gap-12 lg:gap-32   mx-auto w-11/12 sm:w-10/12",
 				className
 			)}
 		>

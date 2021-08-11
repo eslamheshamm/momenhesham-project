@@ -11,7 +11,7 @@ export default function Projects({ allPosts }) {
 			</Head>
 
 			{ALLPOSTS.length > 0 && (
-				<ProjectsPreview className="mt-24" posts={ALLPOSTS} />
+				<ProjectsPreview className="mt-7" posts={ALLPOSTS} />
 			)}
 		</Layout>
 	);

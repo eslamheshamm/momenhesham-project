@@ -72,22 +72,17 @@ export default function Layout(props) {
 								)}
 							>
 								<li className="lg:mr-4 xl:mr-8 mr-2">
-									<a
-										href="#"
-										target="_blank"
-										className="flex items-center "
-										onClick={() => {
-											setContact(false);
-										}}
-									>
-										<Arrow
-											className={cn(
-												"mr-3",
-												contact ? "text-white" : "text-black"
-											)}
-										/>
-										<span>Youtube</span>
-									</a>
+									<Link href="/projects">
+										<a
+											href="/projects"
+											className="flex items-center "
+											onClick={() => {
+												setContact(false);
+											}}
+										>
+											<span>Projects</span>
+										</a>
+									</Link>
 								</li>
 								<li className="lg:mr-4 xl:mr-8 mr-2">
 									<Link href="/blog">
@@ -103,21 +98,8 @@ export default function Layout(props) {
 									</Link>
 								</li>{" "}
 								<li className="lg:mr-4 xl:mr-8  mr-2">
-									<Link href="/projects">
-										<a
-											href="/projects"
-											className="flex items-center "
-											onClick={() => {
-												setContact(false);
-											}}
-										>
-											<span>Projects</span>
-										</a>
-									</Link>
-								</li>
-								<li className="mr-2 lg:mr-4 xl:mr-8">
 									<a
-										href="#"
+										href="https://www.figma.com/@momen"
 										target="_blank"
 										className="flex items-center "
 										onClick={() => {
@@ -125,20 +107,25 @@ export default function Layout(props) {
 										}}
 									>
 										<Arrow className="mr-3" />
-										<span>freebies</span>
+										<span>Freebies</span>
 									</a>
 								</li>
 								<li className="mr-2 lg:mr-4 xl:mr-8">
 									<a
-										href="#"
+										href="http://bit.ly/2Y7dY7C"
 										target="_blank"
 										className="flex items-center "
 										onClick={() => {
 											setContact(false);
 										}}
 									>
-										<Arrow className="mr-3" />
-										<span>résume</span>
+										<Arrow
+											className={cn(
+												"mr-3",
+												contact ? "text-white" : "text-black"
+											)}
+										/>
+										<span>Youtube</span>
 									</a>
 								</li>
 								<li>
@@ -167,22 +154,18 @@ export default function Layout(props) {
 							)}
 						>
 							<li className="">
-								<a
-									href="#"
-									target="_blank"
-									className="flex items-center "
-									onClick={() => {
-										setContact(false);
-									}}
-								>
-									<Arrow
-										className={cn(
-											"mr-3",
-											contact ? "text-white" : "text-black"
-										)}
-									/>
-									<span>Youtube</span>
-								</a>
+								<Link href="/projects">
+									<a
+										href="/projects"
+										className="flex items-center "
+										onClick={() => {
+											setContact(false);
+											setOpen(false);
+										}}
+									>
+										<span>Projects</span>
+									</a>
+								</Link>
 							</li>
 							<li className="mt-6">
 								<Link href="/blog">
@@ -199,22 +182,26 @@ export default function Layout(props) {
 								</Link>
 							</li>{" "}
 							<li className="  mt-6">
-								<Link href="/projects">
-									<a
-										href="/projects"
-										className="flex items-center "
-										onClick={() => {
-											setContact(false);
-											setOpen(false);
-										}}
-									>
-										<span>Projects</span>
-									</a>
-								</Link>
+								<a
+									href="http://bit.ly/2Y7dY7C"
+									target="_blank"
+									className="flex items-center "
+									onClick={() => {
+										setContact(false);
+									}}
+								>
+									<Arrow
+										className={cn(
+											"mr-3",
+											contact ? "text-white" : "text-black"
+										)}
+									/>
+									<span>Youtube</span>
+								</a>
 							</li>
 							<li className=" mt-6">
 								<a
-									href="#"
+									href="https://www.figma.com/@momen"
 									target="_blank"
 									className="flex items-center "
 									onClick={() => {
@@ -224,20 +211,6 @@ export default function Layout(props) {
 								>
 									<Arrow className="mr-3" />
 									<span>freebies</span>
-								</a>
-							</li>
-							<li className=" mt-6">
-								<a
-									href="#"
-									target="_blank"
-									className="flex items-center "
-									onClick={() => {
-										setContact(false);
-										setOpen(false);
-									}}
-								>
-									<Arrow className="mr-3" />
-									<span>résume</span>
 								</a>
 							</li>
 							<li className=" mt-6">

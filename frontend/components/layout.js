@@ -43,7 +43,7 @@ export default function Layout(props) {
 								setOpen(false);
 							}}
 						>
-							<Observer svgColor={contact ? "white" : "black"} />
+							<Observer svgcolor={contact ? "white" : "black"} />
 							<div
 								className={cn(
 									" h-4  mx-3 w-[1px]",
@@ -278,7 +278,7 @@ export default function Layout(props) {
 					<Signture />
 				</section>
 				<Footer
-					svgColor={contact ? "white" : "black"}
+					svgcolor={contact ? "white" : "black"}
 					className={contact ? "text-white" : null}
 				/>
 			</main>

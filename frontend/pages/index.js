@@ -79,7 +79,7 @@ export default function Index({ allPosts }) {
 					AllPosts.podcasts.map((podcast) => {
 						console.log(podcast);
 						return (
-							<figure>
+							<figure key={podcast._id}>
 								<a
 									href={`${podcast.link}`}
 									target="_blank"

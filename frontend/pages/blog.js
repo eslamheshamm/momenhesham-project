@@ -3,26 +3,17 @@ import Head from "next/head";
 import PostsPreview from "../components/blog/posts-preview";
 import Layout from "../components/layout";
 import cn from "classnames";
-import {
-	getAllPostsForBlog,
-	getAllPostsForDesign,
-	getAllPostsForPhilosophy,
-	getAllPostsForPersonal,
-} from "../lib/api";
-export default function Blog({
-	allPosts,
-	designPosts,
-	philosophyPosts,
-	personalPosts,
-}) {
-	const AllPosts = allPosts;
-	const DesignPosts = designPosts;
-	const PersonalPosts = personalPosts;
-	const PhilosphyPosts = philosophyPosts;
+import { getAllPostsForBlog } from "../lib/api";
+export default function Blog({ allPosts }) {
+	const AllPosts = allPosts.allPosts;
+	const DesignPosts = allPosts.design;
+	const PersonalPosts = allPosts.personal;
+	const PhilosophyPosts = allPosts.philosophy;
 	const [all, SetAll] = useState(true);
 	const [design, SetDesign] = useState(false);
-	const [philosphy, setPhilosophy] = useState(false);
+	const [philosophy, setPhilosophy] = useState(false);
 	const [personal, setPersonal] = useState(false);
+	console.log(AllPosts);
 	return (
 		<Layout>
 			<Head>
@@ -83,7 +74,7 @@ export default function Blog({
 						<button
 							className={cn(
 								"p-3 sm:py-4 sm:px-8 w-32 sm:w-auto  border border-black rounded-3xl sm:rounded-[36px]  my-2 sm:my-0 mx-0 ",
-								philosphy && "font-NeueBold border-0 text-white bg-black"
+								philosophy && "font-NeueBold border-0 text-white bg-black"
 							)}
 							onClick={() => {
 								SetAll(false);
@@ -102,8 +93,8 @@ export default function Blog({
 			{personal && PersonalPosts.length > 0 && (
 				<PostsPreview posts={PersonalPosts} />
 			)}
-			{philosphy && PhilosphyPosts.length > 0 && (
-				<PostsPreview posts={PhilosphyPosts} />
+			{philosophy && PhilosophyPosts.length > 0 && (
+				<PostsPreview posts={PhilosophyPosts} />
 			)}
 		</Layout>
 	);
@@ -111,11 +102,8 @@ export default function Blog({
 
 export async function getStaticProps({ preview = false }) {
 	const allPosts = await getAllPostsForBlog(preview);
-	const designPosts = await getAllPostsForDesign(preview);
-	const philosophyPosts = await getAllPostsForPhilosophy(preview);
-	const personalPosts = await getAllPostsForPersonal(preview);
 	return {
-		props: { allPosts, designPosts, philosophyPosts, personalPosts, preview },
+		props: { allPosts, preview },
 		revalidate: 1,
 	};
 }

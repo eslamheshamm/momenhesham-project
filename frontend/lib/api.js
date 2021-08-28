@@ -48,33 +48,57 @@ export async function getAllPostsWithSlug() {
 }
 
 export async function getAllPostsForBlog(preview) {
-	const results = await getClient(preview)
-		.fetch(`*[_type == "post"] | order(publishedAt desc){
-      ${BlogPostPreview}
-    }`);
-	return getUniquePosts(results);
+	const curClient = getClient(preview);
+	const [allPosts, philosophy, design, personal] = await Promise.all([
+		curClient.fetch(`*[_type == "post"] | order(publishedAt desc){
+			${BlogPostPreview}
+		  }`),
+		curClient.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Design"]._id)] | order(date desc, _updatedAt desc){
+			${BlogPostPreview}
+		  }`),
+		curClient.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Philosophy"]._id)] | order(date desc, _updatedAt desc){
+			${BlogPostPreview}
+		  }`),
+		curClient.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Personal"]._id)] | order(date desc, _updatedAt desc){
+			${BlogPostPreview}
+		  }`),
+	]);
+	return {
+		allPosts: getUniquePosts(allPosts),
+		philosophy: getUniquePosts(philosophy),
+		design: getUniquePosts(design),
+		personal: getUniquePosts(personal),
+	};
 }
-export async function getAllPostsForDesign(preview) {
-	const results = await getClient(preview)
-		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Design"]._id)] | order(date desc, _updatedAt desc){
-      ${BlogPostPreview}
-    }`);
-	return getUniquePosts(results);
-}
-export async function getAllPostsForPhilosophy(preview) {
-	const results = await getClient(preview)
-		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Philosophy"]._id)] | order(date desc, _updatedAt desc){
-      ${BlogPostPreview}
-    }`);
-	return getUniquePosts(results);
-}
-export async function getAllPostsForPersonal(preview) {
-	const results = await getClient(preview)
-		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Personal"]._id)] | order(date desc, _updatedAt desc){
-      ${BlogPostPreview}
-    }`);
-	return getUniquePosts(results);
-}
+
+// export async function getAllPostsForBlog(preview) {
+// 	const results = await getClient(preview)
+// 		.fetch(`*[_type == "post"] | order(publishedAt desc){
+//       ${BlogPostPreview}
+//     }`);
+// 	return getUniquePosts(results);
+// }
+// export async function getAllPostsForDesign(preview) {
+// 	const results = await getClient(preview)
+// 		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Design"]._id)] | order(date desc, _updatedAt desc){
+//       ${BlogPostPreview}
+//     }`);
+// 	return getUniquePosts(results);
+// }
+// export async function getAllPostsForPhilosophy(preview) {
+// 	const results = await getClient(preview)
+// 		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Philosophy"]._id)] | order(date desc, _updatedAt desc){
+//       ${BlogPostPreview}
+//     }`);
+// 	return getUniquePosts(results);
+// }
+// export async function getAllPostsForPersonal(preview) {
+// 	const results = await getClient(preview)
+// 		.fetch(`*[_type=="post" && references(*[_type=="category" && title == "Personal"]._id)] | order(date desc, _updatedAt desc){
+//       ${BlogPostPreview}
+//     }`);
+// 	return getUniquePosts(results);
+// }
 export async function getPostAndMorePosts(slug, preview) {
 	const curClient = getClient(preview);
 	const [post, morePosts] = await Promise.all([
@@ -223,14 +247,16 @@ export async function getAllPodcasts(preview) {
 export async function getAllPostsForHome(preview) {
 	const curClient = getClient(preview);
 	const [projects, blogPosts, podcasts] = await Promise.all([
-		curClient.fetch(
-			`*[_type == "project"] | order(publishedAt desc){
+		curClient
+			.fetch(
+				`*[_type == "project"] | order(publishedAt desc){
 					_id,
 					'slug': slug.current,
 					'coverImage': mainImage,
 			  
 				  }[0..2]`
-		),
+			)
+			.catch((error) => console.log(error, "error")),
 		curClient.fetch(
 			`*[_type == "post"] | order(publishedAt desc) {
 				_id,
